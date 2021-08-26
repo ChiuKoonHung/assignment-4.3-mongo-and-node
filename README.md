@@ -8,7 +8,7 @@ In this assignment, we will use the database `sample_supplies` and collection `s
 No codebase is provided in this assignment. You are to set up Node project and install `mongodb` package. Write mongo operations with Node.js and ensure those are working code. Copy the relevant code (the query/aggregation pipeline) to answer the questions here. 
 
 
-### Business Requirement 1 - List the total cost for each purchase. (sum up the `price` properties in array `items`)
+### Business Requirement 1 - List top five purchaser's email and total price (sum up the `price` properties in array `items`)
 
 ```
 // Your answer
@@ -26,7 +26,7 @@ No codebase is provided in this assignment. You are to set up Node project and i
 // Your answer
 ```
 
-### Business Requirement 4 - What are the top 10 most popular purchased items and their price?
+### Business Requirement 4 - List unique purchased items and their price.
 
 ```
 // Your answer
