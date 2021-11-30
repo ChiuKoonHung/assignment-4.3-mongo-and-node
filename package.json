@@ -1,0 +1,24 @@
+{
+  "name": "assignment-4.3-mongo-and-node",
+  "version": "1.0.0",
+  "description": "In this assignment, we will use the database `sample_supplies` and collection `sales`. Based on the stated business requirements, you are to write queries and aggregations (as answers) that produce results to meet the needs. This assignment will not tell you which data to query and what to return. You have to make a sensible decision on your own with optimization in mind. The general rule is not to produce data that are more than required.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skills-Union-NTU-SDI-Program/assignment-4.3-mongo-and-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skills-Union-NTU-SDI-Program/assignment-4.3-mongo-and-node/issues"
+  },
+  "homepage": "https://github.com/Skills-Union-NTU-SDI-Program/assignment-4.3-mongo-and-node#readme",
+  "dependencies": {
+    "mongodb": "^4.2.0"
+  }
+}

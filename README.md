@@ -11,25 +11,62 @@ No codebase is provided in this assignment. You are to set up Node project and i
 ### Business Requirement 1 - List the total cost for each purchase. (sum up the `price` properties in array `items`)
 
 ```
-// Your answer
+//
+    const pipeline = [
+        {$unwind: "$items"},
+        {$group: {_id:'$_id', items: {$push: {$concat: [{$toString: "$items.price"}, " > ", {$toString: "$items.quantity"}]}}, total: {$sum: { $multiply: [ "$items.price", "$items.quantity" ] }} } },
+    ];
+
+    let result = await sales.aggregate(pipeline).toArray();
+    console.log(result);
+
+// Will return {customer_email: 'aroru@ti.yt',totalCost: new Decimal128("353.91")}...
 ```
 
 ### Business Requirement 2 - What are the different types of purchase method and which are more popular?
 
 ```
-// Your answer
+// 
+    const pipeline = [
+        {
+            $group: { _id: { purchaseMethod: "$purchaseMethod" }, Popularity: { $count: {} } },
+        },
+        ];
+        
+        result = await sales.aggregate(pipeline).toArray();
+        console.log(result);
+
+// Will return { _id: { purchaseMethod: 'Online' }, Popularity: 1585 }...
 ```
 
 ### Business Requirement 3 - What is the average spending for the distinct purchase methods?
 
 ```
-// Your answer
+//
+       const pipeline = [
+            {$unwind: "$items"},
+            {$group: {_id:{ "purchaseMethod":"$purchaseMethod" }, items: {$push: {$concat: [{$toString: "$items.price"}, " > ", {$toString: "$items.quantity"}]}}, AvgSpending: {$avg: { $multiply: [ "$items.price", "$items.quantity" ] }} } },
+            ];
+        
+            result = await sales.aggregate(pipeline).toArray();
+            console.log(result);
 ```
 
 ### Business Requirement 4 - What are the top 10 most popular purchased items and their price?
 
 ```
-// Your answer
+// 
+	const pipeline = [
+		{ $group: { _id: '$items.name', noOfOccurences: { $count: {} }, price: {$first: '$items.price' } }},
+
+		{ $sort: { noOfOccurences: -1 } },
+
+		{$limit: 10}
+	];
+        result = await sales.aggregate(pipeline).toArray();
+        console.log(result);
+
+//   {_id: [ 'notepad' ], noOfOccurences: 128, price: [ new Decimal128("10.86") ]}...
 ```
 
 ## Submission Guidelines
